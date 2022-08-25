@@ -1,20 +1,22 @@
 ﻿/*
-Задача 48: Задайте двумерный массив размера m на n, каждый элемент в массиве находится по формуле: Aₘₙ = m+n. 
-Выведите полученный массив на экран.
-m = 3, n = 4.
-
-0 1 2 3
-1 2 3 4
-2 3 4 5. 
-*/
+Задача 49: Задайте двумерный массив. Найдите элементы, у которых 
+оба индекса чётные, и замените эти элементы на их квадраты.*/
 
 using static System.Console;
 using System.Linq;
 Clear();
 
-int[,] mat = GetMatrix(3, 4);
+int[,] mat = GetMatrix(6, 6);
 
 PrintMatrix(mat);
+NewMatrix(mat);
+
+WriteLine();
+
+PrintMatrix(mat);
+WriteLine();
+
+
 
 
 int[,] GetMatrix(int rows, int colums) 
@@ -27,13 +29,34 @@ int[,] GetMatrix(int rows, int colums)
     {
         for (int j = 0; j < colums; j++)
         {
-            result[i, j] = i + j;
+            result[i, j] = new Random().Next(-10, -2);
         }    
     }
 
 
     return result;
+
 }
+
+void NewMatrix(int[,] matt)
+{
+    
+    for (int i = 2; i < matt.GetLength(0); i++)
+    {
+        for (int j = 2; j < matt.GetLength(1); j++)
+        {
+            if (i%2==0 && j%2==0)
+            {
+                matt[i,j] *= matt[i,j];
+            }
+        }
+    }
+    
+    
+}
+
+
+
 
 void PrintMatrix(int[,] matrix)
 {
@@ -47,17 +70,5 @@ void PrintMatrix(int[,] matrix)
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
