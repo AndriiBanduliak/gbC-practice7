@@ -1,20 +1,21 @@
 ﻿/*
-Задача 49: Задайте двумерный массив. Найдите элементы, у которых 
-оба индекса чётные, и замените эти элементы на их квадраты.*/
+Задача 51: Задайте двумерный массив. Найдите сумму элементов, 
+находящихся на главной диагонали 
+(с индексами (0,0); (1;1) и т.д.
+*/
 
 using static System.Console;
 using System.Linq;
 Clear();
 
-int[,] mat = GetMatrix(6, 6);
+int[,] mat = GetMatrix(3, 3);
 
 PrintMatrix(mat);
-NewMatrix(mat);
 
-WriteLine();
 
-PrintMatrix(mat);
-WriteLine();
+WriteLine(NewMatrix(mat));
+
+
 
 
 
@@ -29,7 +30,7 @@ int[,] GetMatrix(int rows, int colums)
     {
         for (int j = 0; j < colums; j++)
         {
-            result[i, j] = new Random().Next(-10, -2);
+            result[i, j] = new Random().Next(0, 10);
         }    
     }
 
@@ -38,20 +39,21 @@ int[,] GetMatrix(int rows, int colums)
 
 }
 
-void NewMatrix(int[,] matt)
+int NewMatrix(int[,] matt)
 {
-    
-    for (int i = 2; i < matt.GetLength(0); i++)
+    int sum = 0;
+
+    for (int i = 0; i < matt.GetLength(0); i++)
     {
-        for (int j = 2; j < matt.GetLength(1); j++)
+        for (int j = 0; j < matt.GetLength(1); j++)
         {
-            if (i%2==0 && j%2==0)
+            if (i==j )
             {
-                matt[i,j] *= matt[i,j];
+                sum += matt[i,j];
             }
         }
     }
-    
+    return sum;
     
 }
 
