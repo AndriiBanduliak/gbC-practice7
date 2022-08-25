@@ -8,7 +8,7 @@ using static System.Console;
 using System.Linq;
 Clear();
 
-int[,] mat = GetMatrix(3, 3);
+int[,] mat = GetMatrix(4, 3);
 
 PrintMatrix(mat);
 
@@ -71,6 +71,17 @@ void PrintMatrix(int[,] matrix)
     WriteLine();
     }
 
+}
+
+int GetSquareArray(int[,] inArray)
+{
+    int sum = 0;
+    int size = inArray.GetLength(0) < inArray.GetLength(1)? inArray.GetLength(0) : inArray.GetLength(1);
+    for (int i = 0; i < size; i++) 
+    {
+        sum += inArray[i,i];
+    }
+    return sum;
 }
 
 
