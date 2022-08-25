@@ -1,38 +1,63 @@
 ﻿/*
-Задача 46: Задайте двумерный массив размером m×n, заполненный случайными целыми числами.*/
+Задача 48: Задайте двумерный массив размера m на n, каждый элемент в массиве находится по формуле: Aₘₙ = m+n. 
+Выведите полученный массив на экран.
+m = 3, n = 4.
+
+0 1 2 3
+1 2 3 4
+2 3 4 5. 
+*/
 
 using static System.Console;
 using System.Linq;
 Clear();
 
+int[,] mat = GetMatrix(3, 4);
 
-Write('Введите размер массива, минимальное и максимальное число через пробел ');
-int[] parameters = ReadLine()!.Split
-PrintMatrixArray(matrix);
+PrintMatrix(mat);
 
 
-int[,] GetMatrixArray(int rows,int colums, int minValue, int maxValue)
+int[,] GetMatrix(int rows, int colums) 
 {
-   int[,] result=new int[rows,colums];
-   for (int i = 0; i < rows; i++)
-   {
+
+    int[,] result = new int[rows, colums];
+
+
+    for (int i = 0; i < rows; i++)
+    {
         for (int j = 0; j < colums; j++)
         {
-            result[i,j]=new Random().Next(minValue,maxValue+1);
-        }
-   }
-   return result;
+            result[i, j] = i + j;
+        }    
+    }
+
+
+    return result;
 }
 
-void PrintMatrixArray(int[,] inArray)
+void PrintMatrix(int[,] matrix)
 {
-   for (int i = 0; i < inArray.GetLength(0); i++)
-   {
-      for (int j = 0; j < inArray.GetLength(1); j++)
-      {
-          Write($"{inArray[i,j]} ");
-      }
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Write($"{matrix[i,j]} ");
+        }
     WriteLine();
-   }
+    }
+
 }
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
